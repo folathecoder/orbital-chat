@@ -1,5 +1,9 @@
 # Orbital — Product Engineering Take-Home
 
+## Demo
+
+[Watch the demo on Loom](https://www.loom.com/share/e79e14b2c16c4655b774ce36c298869e)
+
 Welcome! This is a take-home assessment for a Product Engineering role at Orbital.
 
 You've been given a working baseline application: a document Q&A tool for commercial real estate lawyers. Users upload legal documents (leases, title reports, environmental assessments) and ask questions about them. The AI assistant answers questions grounded in the document content.
