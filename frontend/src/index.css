@@ -187,7 +187,9 @@ body {
   }
 }
 
-.streaming-content .prose p:last-child::after {
+.streaming-content .prose > :last-child::after,
+.streaming-content .prose > :last-child > li:last-child::after,
+.streaming-content .prose > :last-child > li:last-child > p:last-child::after {
   content: '';
   display: inline-block;
   width: 2px;
@@ -196,6 +198,14 @@ body {
   margin-left: 2px;
   vertical-align: text-bottom;
   animation: cursor-blink 1s step-end infinite;
+}
+
+.streaming-content .prose > :last-child:has(> li:last-child)::after,
+.streaming-content
+  .prose
+  > :last-child
+  > li:last-child:has(> p:last-child)::after {
+  content: none;
 }
 
 .streaming-content [data-streamdown-new] {
