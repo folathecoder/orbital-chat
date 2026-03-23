@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  background-color: #fafafa;
+  color: #171717;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d4d4d4;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a3a3a3;
+}
+
+/* Prose styling for markdown content */
+.prose {
+  line-height: 1.7;
+  font-size: 0.9375rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.prose p {
+  margin-bottom: 0.75em;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-weight: 600;
+  margin-top: 1.25em;
+  margin-bottom: 0.5em;
+}
+
+.prose h1 {
+  font-size: 1.5em;
+}
+
+.prose h2 {
+  font-size: 1.25em;
+}
+
+.prose h3 {
+  font-size: 1.125em;
+}
+
+.prose ul {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+  list-style-type: disc;
+}
+
+.prose ol {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+  list-style-type: decimal;
+}
+
+.prose li {
+  margin-bottom: 0.25em;
+  display: list-item;
+}
+
+.prose ul ul {
+  list-style-type: circle;
+}
+.prose ul ul ul {
+  list-style-type: square;
+}
+.prose ol ol {
+  list-style-type: lower-alpha;
+}
+.prose ol ol ol {
+  list-style-type: lower-roman;
+}
+
+.prose code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.875em;
+  background-color: #f5f5f5;
+  padding: 0.125em 0.375em;
+  border-radius: 0.25em;
+}
+
+.prose pre {
+  background-color: #171717;
+  color: #e5e5e5;
+  padding: 1em;
+  border-radius: 0.5em;
+  overflow-x: auto;
+  margin: 0.75em 0;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+.prose blockquote {
+  border-left: 3px solid #d4d4d4;
+  padding-left: 1em;
+  margin: 0.75em 0;
+  color: #525252;
+}
+
+.prose a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.75em 0;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid #e5e5e5;
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+
+.prose th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+/* Streaming animation */
+@keyframes token-fade-in {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes cursor-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.streaming-content .prose p:last-child::after {
+  content: '';
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: #a3a3a3;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: cursor-blink 1s step-end infinite;
+}
+
+.streaming-content [data-streamdown-new] {
+  animation: token-fade-in 0.3s ease-out;
+}
+
+/* Citation badge in messages */
+.citation-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 9999px;
+  background-color: #e5e5e5;
+  color: #404040;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 2px;
+  transition: background-color 0.15s, color 0.15s;
+  vertical-align: middle;
+  position: relative;
+}
+
+.citation-badge:hover {
+  background-color: #171717;
+  color: #ffffff;
+}
+
+/* Citation highlight in PDF viewer */
+.highlight-citation {
+  background-color: #fef08a;
+  border-radius: 2px;
+  padding: 1px 0;
+}
